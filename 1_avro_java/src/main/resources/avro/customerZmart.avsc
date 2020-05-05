@@ -1,0 +1,16 @@
+{
+        "type": "record",
+        "namespace": "com.zmart.customer",
+        "name": "Customer",
+        "doc": "Avro Schema for our ZMart's Customer",
+        "fields": [
+          { "name": "client_id", "type": "string", "doc": "client Id of Customer" },
+          { "name": "first_name", "type": "string", "doc": "First Name of Customer" },
+          { "name": "last_name", "type": "string", "doc": "Last Name of Customer" },
+          { "name": "product_id", "type": "string", "doc": "id of product" },
+          { "name": "price", "type": "float", "doc": "price of product in euro" },
+          { "name": "quantity", "type": "int", "doc": "quantity of products in units" },
+          { "name": "credict_card", "type": "string", "doc": "credict card number in format xxx-xxx-xxx-945" },
+          { "name": "entity_finance", "type": "string", "default": "unknown", "doc": "name entity finance of credict card" }
+        ]
+}
