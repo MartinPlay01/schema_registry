@@ -67,7 +67,7 @@ public class GenericZmart {
         // writing to a file
     final DatumWriter<GenericRecord> datumWriter = new GenericDatumWriter<>(schema);
     try(DataFileWriter<GenericRecord> dataFileWriter = new DataFileWriter<>(datumWriter)){
-      dataFileWriter.create(customer.getSchema(), new File("customer-zmart-generic.avro"));
+      dataFileWriter.create(customer.getSchema(), new File("1_avro_java/outputs/customer-zmart-generic.avro"));
       dataFileWriter.append(customer);
       System.out.println("Written customer-zmart-generic.avro");
     } catch (IOException e){
@@ -75,7 +75,7 @@ public class GenericZmart {
     }
     // step 3: read a generic record from a file
     
-    final File file = new File("customer-zmart-generic.avro");
+    final File file = new File("1_avro_java/outputs/customer-zmart-generic.avro");
     final DatumReader<GenericRecord> datumReader = new GenericDatumReader<>();
     GenericRecord customerRead;
     try(DataFileReader<GenericRecord> dataFileReader = new DataFileReader<>(file, datumReader)) {

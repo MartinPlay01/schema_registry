@@ -24,7 +24,7 @@ public class ReflecZmartDefine {
     
     try {
       System.out.println("Writing customer-reflected-zmart.avro");
-      File file = new File("customer-reflected-zmart.avro");
+      File file = new File("1_avro_java/outputs/customer-reflected-zmart.avro");
       DatumWriter<ReflectedZmartCustomer> writer = new ReflectDatumWriter<>(ReflectedZmartCustomer.class);
       DataFileWriter<ReflectedZmartCustomer> out = new DataFileWriter<>(writer)
         .setCodec(CodecFactory.deflateCodec(9))
@@ -33,17 +33,18 @@ public class ReflecZmartDefine {
       out.append(new ReflectedZmartCustomer("3452345", "Martín", "Doe", "3452345g3", 45.4f, 52, "xxx-xxx-xxx-445", "visa"));
       out.close();
     }catch (IOException e){
+      System.out.println("*** problema de escritura");
       e.printStackTrace();
     }
-    
+
 //    read from an avro into our Reflected class
 //    open a file of ReflectedZmartCustomer - customer-reflected-zmart.avro
     try{
       System.out.println("Reading customer-reflected-zmart.avro");
-      File file = new File("customer-reflected-zmart.avro");
+      File file = new File("1_avro_java/outputs/customer-reflected-zmart.avro");
       DatumReader<ReflectedZmartCustomer> reader = new ReflectDatumReader<>(ReflectedZmartCustomer.class);
       DataFileReader<ReflectedZmartCustomer> in = new DataFileReader<>(file, reader);
-  
+
 //    read ReflectedZmartCustomer from a file & print them as JSON
       for (ReflectedZmartCustomer reflectedCustomerZ :in){
         System.out.println(reflectedCustomerZ.getInfoCustomer());

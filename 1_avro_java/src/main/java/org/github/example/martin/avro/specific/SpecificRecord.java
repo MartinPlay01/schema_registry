@@ -33,7 +33,7 @@ public class SpecificRecord {
     
     final DatumWriter<Customer> datumWriter = new SpecificDatumWriter<>(Customer.class);
     try(DataFileWriter<Customer> dataFileWriter = new DataFileWriter<>(datumWriter)){
-      dataFileWriter.create(lala.getSchema(), new File("customer-zmart-specific.avro"));
+      dataFileWriter.create(lala.getSchema(), new File("1_avro_java/outputs/customer-zmart-specific.avro"));
       dataFileWriter.append(lala);
       System.out.println("Succesfully write customer-zmart-specific.avro");
     }catch(IOException e){
@@ -41,7 +41,7 @@ public class SpecificRecord {
     }
     
     // step 3: read from file
-    final File file = new File("customer-zmart-specific.avro");
+    final File file = new File("1_avro_java/outputs/customer-zmart-specific.avro");
     final DatumReader<Customer> datumReader = new SpecificDatumReader<>(Customer.class);
     final DataFileReader<Customer> dataFileReader;
     
